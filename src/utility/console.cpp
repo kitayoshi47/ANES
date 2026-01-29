@@ -18,8 +18,8 @@ int CConsole::Initialize(InitDesc& desc)
         return 0;
     }
 
-    int SCREEN_WIDTH  = desc.width;
-    int SCREEN_HEIGHT = desc.height;
+    m_screen_w = desc.width;
+    m_screen_h = desc.height;
 
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
         cout << "SDL init failed." << endl;
@@ -28,7 +28,7 @@ int CConsole::Initialize(InitDesc& desc)
 
     // initialize screen
     m_window = SDL_CreateWindow("Hello world !!", SDL_WINDOWPOS_UNDEFINED,
-        SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+        SDL_WINDOWPOS_UNDEFINED, m_screen_w, m_screen_h, SDL_WINDOW_SHOWN);
 
     if (m_window == NULL) {
         SDL_Quit();
@@ -37,7 +37,7 @@ int CConsole::Initialize(InitDesc& desc)
 
     m_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_PRESENTVSYNC);
     m_texture  = SDL_CreateTexture(m_renderer, SDL_PIXELFORMAT_RGBA8888,
-        SDL_TEXTUREACCESS_STATIC, SCREEN_WIDTH, SCREEN_HEIGHT);
+        SDL_TEXTUREACCESS_STATIC, m_screen_w, m_screen_h);
 
     if (m_renderer == NULL) {
         cout << "Could not create renderer" << endl;
@@ -55,19 +55,13 @@ int CConsole::Initialize(InitDesc& desc)
     }
 
     // prepare memory
-    m_buffer = new Uint32[SCREEN_WIDTH * SCREEN_HEIGHT];
-    memset(m_buffer, 0, SCREEN_WIDTH * SCREEN_HEIGHT * sizeof(Uint32));
+    m_buffer = new Uint32[m_screen_w * m_screen_h];
+    memset(m_buffer, 0, m_screen_w * m_screen_h * sizeof(Uint32));
 
     // set every 4bytes as color into memory
-    for (int i = 0; i < SCREEN_WIDTH * SCREEN_HEIGHT; i++) {
+    for (int i = 0; i < m_screen_w * m_screen_h; i++) {
         m_buffer[i] = 0x000000FF;
     }
-
-    // update screen
-    SDL_UpdateTexture(m_texture, NULL, m_buffer, SCREEN_WIDTH * sizeof(Uint32));
-    SDL_RenderClear(m_renderer);
-    SDL_RenderCopy(m_renderer, m_texture, NULL, NULL);
-    SDL_RenderPresent(m_renderer);
 
     m_initialized = true;
 
@@ -80,6 +74,13 @@ bool CConsole::Run()
         return false;
     }
 
+    // update screen
+    SDL_UpdateTexture(m_texture, NULL, m_buffer, m_screen_w * sizeof(Uint32));
+    SDL_RenderClear(m_renderer);
+    SDL_RenderCopy(m_renderer, m_texture, NULL, NULL);
+    SDL_RenderPresent(m_renderer);
+
+    // update event
     SDL_Event event;
     SDL_PollEvent(&event);
     if (event.type == SDL_QUIT) {
@@ -101,5 +102,10 @@ void CConsole::Finalize()
     SDL_DestroyWindow(m_window);
     SDL_Quit();
 
+    m_renderer    = NULL;
+    m_texture     = NULL;
+    m_window      = NULL;
+    m_screen_w    = 0;
+    m_screen_h    = 0;
     m_initialized = false;
 }

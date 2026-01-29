@@ -6,8 +6,8 @@ class CConsole
 {
 public:
 	struct InitDesc {
-		int width  = 800;
-		int height = 600;
+		int width  = 640;
+		int height = 480;
 	};
 
 public:
@@ -20,6 +20,8 @@ public:
 
 private:
 	bool          m_initialized = false;
+	int           m_screen_w    = 0;
+	int           m_screen_h    = 0;
 	Uint32*       m_buffer      = NULL;
 	SDL_Renderer* m_renderer    = NULL;
 	SDL_Texture*  m_texture     = NULL;

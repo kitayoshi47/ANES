@@ -16,6 +16,7 @@ Canes::~Canes()
 
 void Canes::Initialize()
 {
+    printf("ANES: Version.%s\n", ANES_VER);
     printf("ANES: Initialize\n");
 
     if (console) {
