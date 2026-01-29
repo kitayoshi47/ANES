@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="ANES.vcxproj" Id="4381d9ab-4abc-41ba-9d73-fd2646fc68c8" />
+</Solution>
