@@ -7,7 +7,6 @@ static CConsole* console = NULL;
 Canes::Canes()
 {
     console = new CConsole();
-
 }
 
 Canes::~Canes()
@@ -15,14 +14,30 @@ Canes::~Canes()
     SafeDelete(console);
 }
 
-bool Canes::Run()
+void Canes::Initialize()
+{
+    printf("ANES: Initialize\n");
+
+    if (console) {
+        CConsole::InitDesc desc;
+        console->Initialize(desc);
+    }
+}
+
+void Canes::Run()
 {
     printf("ANES: Run\n");
 
-    if (0)
-    {
-        return false;
+    while (console->Run()) {
+        ;
     }
+}
 
-    return true;
+void Canes::Finalize()
+{
+    printf("ANES: Finalize\n");
+
+    if (console) {
+        console->Finalize();
+    }
 }

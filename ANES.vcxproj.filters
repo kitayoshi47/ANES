@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="src\anes.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utility\console.cpp">
+      <Filter>src\utility</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nes\ppu.cpp">
+      <Filter>src\nes</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\anes.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utility\console.h">
+      <Filter>src\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utility\utility.h">
+      <Filter>src\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="src\nes\ppu.h">
+      <Filter>src\nes</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{08ff0a88-2f13-4610-a7b5-e28b5d425fbf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\utility">
+      <UniqueIdentifier>{a06a8c00-f07a-4478-8d5e-d5bf553f72e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\nes">
+      <UniqueIdentifier>{88472abc-fc76-4459-8fac-fdc5f5bc9dc4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

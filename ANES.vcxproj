@@ -141,10 +141,12 @@
   <ItemGroup>
     <ClCompile Include="src\anes.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\nes\ppu.cpp" />
     <ClCompile Include="src\utility\console.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\anes.h" />
+    <ClInclude Include="src\nes\ppu.h" />
     <ClInclude Include="src\utility\console.h" />
     <ClInclude Include="src\utility\utility.h" />
   </ItemGroup>
