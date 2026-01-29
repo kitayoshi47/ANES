@@ -3,8 +3,9 @@
 int main(int argc, char* argv[])
 {
 	Canes anes;
+	Canes::InitDesc desc;
 
-	anes.Initialize();
+	anes.Initialize(desc);
 	anes.Run();
 	anes.Finalize();
 

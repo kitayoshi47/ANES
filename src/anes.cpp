@@ -14,7 +14,7 @@ Canes::~Canes()
     SafeDelete(console);
 }
 
-void Canes::Initialize()
+void Canes::Initialize(InitDesc& desc)
 {
     printf("ANES: Version.%s\n", ANES_VER);
     printf("ANES: Initialize\n");

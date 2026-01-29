@@ -5,10 +5,15 @@
 class Canes
 {
 public:
+    struct InitDesc {
+        int val = 0;
+    };
+
+public:
     Canes();
     ~Canes();
 
-    void Initialize();
+    void Initialize(InitDesc& desc);
     void Run();
     void Finalize();
 };
